@@ -7,13 +7,29 @@ import { RecipesService } from '../../services/recipes.service';
   selector: 'app-home',
   imports: [RecipeCardComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
   recipes: Recipe[] = [];
+  dummyRecipes: Recipe[] = [];
+  errorMessage: any = '';
 
-  constructor(recipesService: RecipesService){
+  constructor(recipesService: RecipesService) {
     this.recipes = recipesService.recipes;
+    try {
+    recipesService.getAllRecipes().subscribe({
+      next: (response) => {
+        console.log(response);
+        //throw new Error('Something happened');
+        this.dummyRecipes = response.recipes;
+      },
+      error: (err) => {
+        console.log(err);
+        this.errorMessage = err.message;
+      }
+    });
+  } catch (error) {
+    this.errorMessage = error;
+  } 
   }
-
 }
