@@ -1,8 +1,7 @@
 import { init, i, id, tx } from "@instantdb/core";
-import {environment} from "../../environments/environment"
 
 // ID for app: Lenovo-workshop-angular
-const APP_ID = environment.API_ID;
+const API_ID= '1c4cd50c-2e81-44b9-9c26-5f08d7916854';
 
 // Optional: Declare your schema!
 const schema = i.schema({
@@ -17,6 +16,6 @@ const schema = i.schema({
   },
 });
 
-const db = init({ appId: APP_ID, schema });
+const db = init({ appId: API_ID, schema });
 
 export { db, schema, id, tx };
