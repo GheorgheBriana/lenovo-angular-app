@@ -1,6 +1,42 @@
-<div class="card-container">
-    <div>{{ recipe.name | uppercase }}</div>
-    <img [src]="recipe.image" alt="recipe-image" />
-    <div><b>Preparation Time: </b> {{ recipe.prepTimeMinutes }}</div>
-    <button (click)="goToRecipePage()">Tell me more</button>
-</div>
+<mat-card
+  class="recipe-card"
+  [ngClass]="{ 'easy-difficulty': recipe.difficulty && recipe.difficulty.toLowerCase().trim() === 'easy',
+    'medium-difficulty': recipe.difficulty && recipe.difficulty.toLowerCase().trim() === 'medium',
+    'hard-difficulty': recipe.difficulty && recipe.difficulty.toLowerCase().trim() === 'hard',
+   }"
+>
+  <mat-card-header>
+    <mat-card-title>{{ recipe.name | uppercase }}</mat-card-title>
+  </mat-card-header>
+
+  <img mat-card-image [src]="recipe.image" alt="{{ recipe.name }}" />
+
+  <mat-card-content>
+    <p><strong>Preparation Time:</strong> {{ recipe.prepTimeMinutes }} min</p>
+    <p><strong>Difficulty:</strong> {{ recipe.difficulty }}</p>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button color="primary" (click)="goToRecipePage()">
+      Tell me more
+    </button>
+  </mat-card-actions>
+  
+</mat-card>
+
+<!---------------------------------------------------
+<mat-card class="example-card" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>{{ recipe.name | uppercase }}</mat-card-title>
+  </mat-card-header>
+    <img mat-card-image [src]="recipe.image" alt="{{ recipe.name }}" />
+    <mat-card-content>
+      <p><strong>Preparation Time:</strong> {{ recipe.prepTimeMinutes }} min</p>
+      <p><strong>Difficulty:</strong> {{ recipe.difficulty }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary" (click)="goToRecipePage()">
+        Tell me more
+      </button>
+    </mat-card-actions>
+</mat-card> -->r

@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --color-bg: #f5f0e8;
+    --color-secondary: #a8b78e;
+    --color-accent: #e9c8c8;
+    --color-decor: #cbd8a5;
+  
+    --font-main: 'Poppins', sans-serif;
+  }
+  
+  body {
+    font-family: 'Wix Madefor Display', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400; // sau 700, 500 etc.
+    font-style: normal;
+    background-color: var(--color-bg);    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

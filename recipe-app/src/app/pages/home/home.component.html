@@ -1,19 +1,33 @@
-<h1>Delicious Recipes!</h1>
+<h1 class="title">Delicious Recipes!</h1>
 
-<h2>Recipes</h2>
-<div class="card-container">
-    <!-- <app-recipe-card [recipe]="recipes[0]"></app-recipe-card>
-    <app-recipe-card [recipe]="recipes[1]"></app-recipe-card>
-    <app-recipe-card [recipe]="recipes[2]"></app-recipe-card> -->
+<div class="search-container">
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-label>Search recipe</mat-label>
+    <input matInput [(ngModel)]="searchValue" (ngModelChange)="filterValue()" />
+  </mat-form-field>
 
-    @for (recipe of dummyRecipes; track $index) {
-        <app-recipe-card [recipe]="recipe"></app-recipe-card>
-    } @empty {
-        <div>No items to display</div>
-    }
-
+  <button mat-raised-button color="primary" (click)="redirectToAddRecipe()">
+    Add Recipe
+  </button>
 </div>
 
-{{errorMessage}}
+<div class="card-grid">
+  <!-- Primele 10 dummy recipes 
+  @for (recipe of dummyRecipes.slice(0, 10); track $index) {
+    <app-recipe-card [recipe]="recipe"></app-recipe-card>
+  }-->
 
+  <!-- Rețetele live din InstantDB -->
+  @for (recipe of dbRecipes; track $index) { <!--Filtered recipes-->
+    <app-recipe-card [recipe]="recipe"></app-recipe-card>
+  }
 
+  
+</div>
+
+<mat-error *ngIf="errorMessage">{{ errorMessage }}</mat-error>
+
+<!-- Scroll to top -->
+<button class="scroll-top-btn" (click)="scrollToTop()">
+  ↑
+</button>

@@ -1,4 +1,18 @@
 <p>recipe-page works!</p>
 <div>Id: {{this.router.snapshot.paramMap.get("id") }}</div>
+<!-- -->
+<!--Daca reteta nu exista => se afiseaza tot ce este in div
+    Altfel, trece la notFound-->
+<div *ngIf="recipe; else notFound">
+<!--Afisare titlu reteta-->
+<h1>{{ recipe.name }}</h1>
+<img [src]="recipe.image" [alt]="recipe.name" />
+<p><strong>Dificultate:</strong> {{ recipe.difficulty }}</p>
+<p><strong>Timp de preparare:</strong> {{ recipe.prepTimeMinutes }} minute</p>
+  
+</div>
 
+<ng-template #notFound>
+  <p>Rețeta nu a fost găsită.</p>
+</ng-template>
 
